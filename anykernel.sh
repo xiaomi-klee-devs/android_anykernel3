@@ -32,7 +32,7 @@ ui_print " " "  -> supported_device: $supported_device"
 "$supported_device" || abort "  -> Non-GKI device, abort."
 
 # copy image
-mv kernels/Image .
+mv "kernels/Image*" .
 
 # boot install
 split_boot
