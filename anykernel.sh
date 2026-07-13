@@ -24,14 +24,12 @@ no_magisk_check=1
 
 kernel_version=$(cat /proc/version | awk -F '-' '{print $1}' | awk '{print $3}')
 case $kernel_version in
-    5.1*) ksu_supported=true ;;
-    6.1*) ksu_supported=true ;;
-    6.6*) ksu_supported=true ;;
-    *) ksu_supported=false ;;
+    6.6*) supported_device=true ;;
+    *) supported_device=false ;;
 esac
 
-ui_print " " "  -> ksu_supported: $ksu_supported"
-$ksu_supported || abort "  -> Non-GKI device, abort."
+ui_print " " "  -> supported_device: $supported_device"
+"$supported_device" || abort "  -> Non-GKI device, abort."
 
 # copy image
 mv kernels/Image .
